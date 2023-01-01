@@ -1,15 +1,18 @@
 import 'normalize.css';
 import '@/assets/styles/global.scss';
-import { AppPropsExtended } from '@/types/common';
+
 import EmptyLayout from '@/components/layouts/EmptyLayout';
-import Head from 'next/head';
-import { Inter, Quicksand } from '@next/font/google';
-import { CategoryItem } from '@/types/category';
-import { getStickyCategories } from '@/services/api/getStickyCategories';
 import MainLayout from '@/components/layouts/MainLayout';
-import { useMemo } from 'react';
+import { getStickyCategories } from '@/services/api/getStickyCategories';
+import { CategoryItem } from '@/types/category';
+import { AppPropsExtended } from '@/types/common';
+import { Inter, Quicksand } from '@next/font/google';
 import { cloneDeep } from 'lodash';
+import Head from 'next/head';
 import NextNProgress from 'nextjs-progressbar';
+import { useMemo } from 'react';
+import { Provider } from 'react-redux';
+import store from '@/store';
 
 const interFont = Inter({
   variable: '--font-inter',
@@ -50,15 +53,17 @@ function App(props: AppPropsExtended) {
         </style>
       </Head>
 
-      {Layout === MainLayout ? (
-        <MainLayout stickyCategories={stickyCategoriesCached}>
-          <Component {...pageProps} />
-        </MainLayout>
-      ) : (
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      )}
+      <Provider store={store}>
+        {Layout === MainLayout ? (
+          <MainLayout stickyCategories={stickyCategoriesCached}>
+            <Component {...pageProps} />
+          </MainLayout>
+        ) : (
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        )}
+      </Provider>
 
       <NextNProgress
         height={2}

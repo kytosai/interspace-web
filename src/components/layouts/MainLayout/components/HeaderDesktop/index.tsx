@@ -1,21 +1,24 @@
 import Logo from '@/assets/images/logo.svg';
+import { cartSelectors } from '@/store/cartSlice';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
 import SearchBar from '../SearchBar';
 import styles from './styles.module.scss';
 import { HeaderDesktopProps } from './types';
 
 const HeaderDesktop = (props: HeaderDesktopProps) => {
   const { stickyCategories } = props;
+  const cartTotalQuantity = useSelector(cartSelectors.getTotalQuantity);
   const router = useRouter();
 
   return (
     <section className={styles.header}>
       <div className={styles.mainBar}>
         <Link className={styles.logoField} href="/">
-          <Image src={Logo} width={91} height={38} alt="" priority={true} />
+          <Image src={Logo} width={90} height={38} alt="" priority={true} />
         </Link>
 
         <SearchBar />
@@ -25,7 +28,9 @@ const HeaderDesktop = (props: HeaderDesktopProps) => {
 
           <button className={styles.myCartBtn}>
             <div className={styles.myCartBtnLabel}>My cart</div>
-            <div className={styles.cartQuantityIcon}>12</div>
+            {cartTotalQuantity > 0 && (
+              <div className={styles.cartQuantityIcon}>{cartTotalQuantity}</div>
+            )}
           </button>
         </div>
 

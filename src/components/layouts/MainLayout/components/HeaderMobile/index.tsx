@@ -8,9 +8,12 @@ import IconSearch from '@/components/icons/IconSearch';
 import { HeaderMobileProps } from './types';
 import { useRouter } from 'next/router';
 import clsx from 'clsx';
+import { useSelector } from 'react-redux';
+import { cartSelectors } from '@/store/cartSlice';
 
 const HeaderMobile = (props: HeaderMobileProps) => {
   const { stickyCategories } = props;
+  const cartTotalQuantity = useSelector(cartSelectors.getTotalQuantity);
   const router = useRouter();
 
   return (
@@ -27,6 +30,10 @@ const HeaderMobile = (props: HeaderMobileProps) => {
 
           <button className={styles.actionBtn}>
             <IconCart />
+
+            {cartTotalQuantity > 0 && (
+              <div className={styles.cartQuantityIcon}>{cartTotalQuantity}</div>
+            )}
           </button>
 
           <button className={styles.userBtn}>
