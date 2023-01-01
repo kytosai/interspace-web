@@ -8,8 +8,16 @@ html {
 body {
   font-family: vars.$fontInter;
   color: vars.$secondary2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
   text-decoration: none;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 16px;
+  max-width: 1524px;
 }

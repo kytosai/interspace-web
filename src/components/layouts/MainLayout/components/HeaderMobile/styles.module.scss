@@ -66,6 +66,8 @@
 .cateBar {
   padding-bottom: 16px;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 
   .cateBarInner {
     padding: 0 16px;

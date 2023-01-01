@@ -6,9 +6,12 @@ import Image from 'next/image';
 import IconCart from '@/components/icons/IconCart';
 import IconSearch from '@/components/icons/IconSearch';
 import { HeaderMobileProps } from './types';
+import { useRouter } from 'next/router';
+import clsx from 'clsx';
 
 const HeaderMobile = (props: HeaderMobileProps) => {
   const { stickyCategories } = props;
+  const router = useRouter();
 
   return (
     <section className={styles.header}>
@@ -42,11 +45,17 @@ const HeaderMobile = (props: HeaderMobileProps) => {
         <div className={styles.cateBar}>
           <div className={styles.cateBarInner}>
             {stickyCategories.map((cateItem) => {
+              const slugUrl = `${cateItem.category_slug}-${cateItem.id}`;
+              const isActive = slugUrl === router.query.slug;
+
               return (
                 <Link
-                  className={styles.cateItem}
+                  className={clsx({
+                    [styles.cateItem]: true,
+                    [styles.isActive]: isActive,
+                  })}
                   key={cateItem.id}
-                  href={`/cat/${cateItem.category_slug}-${cateItem.id}`}
+                  href={`/cat/${slugUrl}`}
                 >
                   {cateItem.category_name}
                 </Link>
