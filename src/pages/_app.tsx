@@ -3,11 +3,17 @@ import '@/assets/styles/global.scss';
 import { AppPropsExtended } from '@/types/common';
 import EmptyLayout from '@/components/layouts/EmptyLayout';
 import Head from 'next/head';
-import { Inter } from '@next/font/google';
+import { Inter, Quicksand } from '@next/font/google';
 
 const interFont = Inter({
-  variable: '--inter-font',
+  variable: '--font-inter',
   weight: ['400', '700'],
+  subsets: ['vietnamese'],
+});
+
+const quicksandFont = Quicksand({
+  variable: '--font-quicksand',
+  weight: ['700'],
   subsets: ['vietnamese'],
 });
 
@@ -23,11 +29,14 @@ export default function App(props: AppPropsExtended) {
           content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no"
         />
 
-        <style>{`
-          :root {
-            --inter-font: ${interFont.style.fontFamily};
-          }
-        `}</style>
+        <style>
+          {`
+            :root {
+              --font-inter: ${interFont.style.fontFamily};
+              --font-quicksand: ${quicksandFont.style.fontFamily};
+            }
+          `}
+        </style>
       </Head>
 
       <Layout>
