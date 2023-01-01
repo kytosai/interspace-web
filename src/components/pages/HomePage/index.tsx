@@ -3,7 +3,7 @@ import MainLayout from '@/components/layouts/MainLayout';
 import { NextPageExtended } from '@/types/common';
 
 const HomePage: NextPageExtended = () => {
-  return <div>HomePage</div>;
+  return <div>This is home page</div>;
 };
 
 HomePage.Layout = MainLayout;
