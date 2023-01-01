@@ -1,0 +1,64 @@
+@use '@/assets/styles/_vars' as vars;
+
+.header {
+  background: #3266ca;
+  color: #fff;
+
+  @media screen and (min-width: vars.$breakpointLgMin) {
+    display: none;
+  }
+} // .header
+
+.mainBar {
+  padding: 16px 16px 14px;
+  display: flex;
+  justify-content: space-between;
+
+  .logoField {
+    line-height: 0;
+  }
+
+  .rightCol {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  .actionBtn {
+    background: transparent;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+
+    :global {
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  .userBtn {
+    background: transparent;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    padding: 0;
+
+    .userBtnImg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+} // .mainBar

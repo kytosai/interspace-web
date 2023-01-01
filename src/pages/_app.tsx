@@ -17,8 +17,10 @@ const quicksandFont = Quicksand({
   subsets: ['vietnamese'],
 });
 
-export default function App(props: AppPropsExtended) {
+function App(props: AppPropsExtended) {
   const { Component, pageProps } = props;
+
+  console.log({ props });
   const Layout = Component.Layout ?? EmptyLayout;
 
   return (
@@ -45,3 +47,11 @@ export default function App(props: AppPropsExtended) {
     </>
   );
 }
+
+App.getInitialProps = async () => {
+  return {
+    a: 1,
+  };
+};
+
+export default App;
