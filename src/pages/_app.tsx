@@ -14,13 +14,13 @@ import NextNProgress from 'nextjs-progressbar';
 const interFont = Inter({
   variable: '--font-inter',
   weight: ['400', '700'],
-  subsets: ['vietnamese'],
+  subsets: ['latin'],
 });
 
 const quicksandFont = Quicksand({
   variable: '--font-quicksand',
   weight: ['700'],
-  subsets: ['vietnamese'],
+  subsets: ['latin'],
 });
 
 function App(props: AppPropsExtended) {
