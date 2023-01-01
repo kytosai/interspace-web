@@ -1,12 +1,12 @@
-import { LayoutProps } from '@/types/common';
 import HeaderMobile from './components/HeaderMobile';
+import { MainLayoutProps } from './types';
 
-function MainLayout(props: LayoutProps) {
-  const { children } = props;
+function MainLayout(props: MainLayoutProps) {
+  const { children, stickyCategories = [] } = props;
 
   return (
     <div>
-      <HeaderMobile />
+      <HeaderMobile stickyCategories={stickyCategories} />
       {children}
     </div>
   );

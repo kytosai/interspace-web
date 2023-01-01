@@ -5,13 +5,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 import IconCart from '@/components/icons/IconCart';
 import IconSearch from '@/components/icons/IconSearch';
+import { HeaderMobileProps } from './types';
 
-const HeaderMobile = () => {
+const HeaderMobile = (props: HeaderMobileProps) => {
+  const { stickyCategories } = props;
+
   return (
     <section className={styles.header}>
       <div className={styles.mainBar}>
         <Link className={styles.logoField} href="/">
-          <Image src={LogoWhite} width={91} height={38} alt="" priority />
+          <Image src={LogoWhite} width={91} height={38} alt="" priority={true} />
         </Link>
 
         <div className={styles.rightCol}>

@@ -1,7 +1,7 @@
 export const isServerSide = () => {
-  return window === undefined;
+  return typeof window === 'undefined';
 };
 
 export const isClientSide = () => {
-  return window !== undefined;
+  return typeof window !== 'undefined';
 };

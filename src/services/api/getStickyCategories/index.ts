@@ -7,7 +7,7 @@ export const getStickyCategories = async (request?: GetStickyCategoriesReponse) 
   try {
     const httpClient = await getHttpClient();
 
-    return await httpClient.get<GetStickyCategoriesRequest>(API_URL, {
+    return await httpClient.get<GetStickyCategoriesReponse>(API_URL, {
       params: request,
     });
   } catch (error) {
