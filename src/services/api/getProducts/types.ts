@@ -1,6 +1,9 @@
 export interface GetProductsRequest {
   _page?: number | string;
   _limit?: number | string;
+  _sort?: string;
+  _order?: string;
+  q?: string;
 }
 
 export interface ProductItem {
