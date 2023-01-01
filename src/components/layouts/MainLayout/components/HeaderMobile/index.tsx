@@ -37,6 +37,24 @@ const HeaderMobile = (props: HeaderMobileProps) => {
           </button>
         </div>
       </div>
+
+      {stickyCategories.length > 0 && (
+        <div className={styles.cateBar}>
+          <div className={styles.cateBarInner}>
+            {stickyCategories.map((cateItem) => {
+              return (
+                <Link
+                  className={styles.cateItem}
+                  key={cateItem.id}
+                  href={`/cat/${cateItem.category_slug}-${cateItem.id}`}
+                >
+                  {cateItem.category_name}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </section>
   );
 };

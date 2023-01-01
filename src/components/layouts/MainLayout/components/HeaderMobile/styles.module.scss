@@ -62,3 +62,34 @@
     }
   }
 } // .mainBar
+
+.cateBar {
+  padding-bottom: 16px;
+  overflow: hidden;
+
+  .cateBarInner {
+    padding: 0 16px;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .cateItem {
+    margin-right: 16px;
+    color: #fff;
+    font-weight: 500;
+    font-size: vars.$fontSizeSm;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &.isActive {
+      color: #f79a23;
+    }
+  }
+} // .cateBar
