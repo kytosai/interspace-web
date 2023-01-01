@@ -5,7 +5,7 @@ import { RootState } from '../index';
 export const CART_REDUCER_NAME = 'cart';
 
 const initialState: CartReducerState = {
-  totalQuantity: 5,
+  totalQuantity: 0,
 };
 
 const cartSlice = createSlice({

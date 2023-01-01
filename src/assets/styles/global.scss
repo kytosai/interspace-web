@@ -1,5 +1,9 @@
 @use './_vars' as vars;
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-size: 16px;
   line-height: 1.5;

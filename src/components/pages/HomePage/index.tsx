@@ -12,9 +12,7 @@ const HomePage: NextPageExtended = () => {
         <title>{APP_CONFIG.BRAND_NAME}</title>
       </Head>
 
-      <div>
-        <Link href="/cat/xxx">Category</Link>
-      </div>
+      <div className="container">Home page</div>
     </>
   );
 };
