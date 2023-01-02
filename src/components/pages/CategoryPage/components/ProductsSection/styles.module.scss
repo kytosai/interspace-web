@@ -54,6 +54,41 @@
   }
 } // .mobileHeadBar
 
+.filteredBar {
+  display: none;
+  margin-bottom: 16px;
+
+  @media screen and (min-width: vars.$breakpointLgMin) {
+    display: flex;
+    align-items: center;
+    margin-top: -8px;
+    font-size: vars.$fontSizeSm;
+    flex-wrap: wrap;
+  }
+
+  .filteredBarLabel {
+    font-weight: 500;
+    padding: 6px 0;
+    margin-top: 8px;
+  } 
+  
+  .filteredItem {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    background: #EDEDF0;
+    border-radius: 30px;
+    margin-left: 8px;
+    margin-top: 8px;
+    color: #4A4B57;
+
+    &:hover {
+      color: #fff;
+      background: vars.$primary2;
+    }
+  }
+} // .filteredBar
+
 .productRows {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
