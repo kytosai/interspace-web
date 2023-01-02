@@ -6,6 +6,7 @@ import { ProductsSectionProps } from './types';
 import styles from './styles.module.scss';
 import IconSort from '@/components/icons/IconSort';
 import ProductItemCard from '@/components/shared/ProductItemCard';
+import ProductItemCardSkeleton from '@/components/shared/ProductItemCardSkeleton';
 
 const ProductsSection = (props: ProductsSectionProps) => {
   const { isValidCategory, category } = props;
@@ -57,7 +58,15 @@ const ProductsSection = (props: ProductsSectionProps) => {
 
       <div className={styles.productRows}>
         {isLoading ? (
-          <></>
+          <>
+            {Array.from(new Array(12)).map((_, idx) => {
+              return (
+                <div className={styles.productCol} key={idx}>
+                  <ProductItemCardSkeleton />
+                </div>
+              );
+            })}
+          </>
         ) : (
           <>
             {productList.map((productItem) => {
