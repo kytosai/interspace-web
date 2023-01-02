@@ -1,11 +1,14 @@
+import IconGrid from '@/components/icons/IconGrid';
+import IconList from '@/components/icons/IconList';
 import IconSort from '@/components/icons/IconSort';
 import Alert from '@/components/shared/Alert';
 import ProductItemCard from '@/components/shared/ProductItemCard';
 import ProductItemCardSkeleton from '@/components/shared/ProductItemCardSkeleton';
 import { getProducts } from '@/services/api/getProducts';
-import { useAppSelector } from '@/store';
-import { categorySelectors } from '@/store/categorySlice';
+import { useAppDispatch, useAppSelector } from '@/store';
+import { categoryActions, categorySelectors } from '@/store/categorySlice';
 import { ProductItem } from '@/types/product';
+import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
@@ -40,6 +43,7 @@ const ProductsSection = (props: ProductsSectionProps) => {
   const productLayout = useAppSelector(categorySelectors.getProductLayout);
   const isComponentMounted = useRef(false);
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     isComponentMounted.current = true;
@@ -87,8 +91,38 @@ const ProductsSection = (props: ProductsSectionProps) => {
         )}
       </div>
 
+      <div className={styles.sortByBar}>
+        <div className={styles.sortField}>
+          <select>
+            <option>Recommended</option>
+            <option>Recent add”</option>
+            <option>Price</option>
+          </select>
+        </div>
+
+        <div className={styles.changeLayoutField}>
+          <button
+            className={clsx(styles.changeLayoutBtn, {
+              [styles.changeLayoutBtnActived]: productLayout === 'list',
+            })}
+            onClick={() => dispatch(categoryActions.changeProductLayout('list'))}
+          >
+            <IconList />
+          </button>
+
+          <button
+            className={clsx(styles.changeLayoutBtn, {
+              [styles.changeLayoutBtnActived]: productLayout === 'grid',
+            })}
+            onClick={() => dispatch(categoryActions.changeProductLayout('grid'))}
+          >
+            <IconGrid />
+          </button>
+        </div>
+      </div>
+
       <div className={styles.filteredBar}>
-        <div className={styles.filteredBarLabel}>Ralated</div>
+        <div className={styles.filteredBarLabel}>Related</div>
 
         {fakeFilteredList.map((filterItem) => {
           return (

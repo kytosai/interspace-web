@@ -54,6 +54,46 @@
   }
 } // .mobileHeadBar
 
+.sortByBar {
+  display: none;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: vars.$breakpointLgMin) {
+    display: flex;
+    align-items: center;
+  }
+
+  .sortField {
+  }
+
+  .changeLayoutField {
+    margin-left: auto;
+    border-radius: 4px;
+    background: #EBF2FF;
+    display: flex;
+    height: 36px;
+    align-items: center;
+  }
+
+  .changeLayoutBtn {
+    width: 68px;
+    height: 36px;
+    border-radius: 4px;
+    background: transparent;
+    border: 0;
+    color: vars.$secondary1;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+  }
+
+  .changeLayoutBtnActived {
+    background: #fff;
+    color: vars.$primary1;
+    box-shadow: 0px 1px 2px rgba(27, 78, 163, 0.24), 0px 2px 4px rgba(41, 121, 255, 0.24);
+  }
+} // .sortByBar
+
 .filteredBar {
   display: none;
   margin-bottom: 16px;
@@ -70,17 +110,17 @@
     font-weight: 500;
     padding: 6px 0;
     margin-top: 8px;
-  } 
-  
+  }
+
   .filteredItem {
     display: flex;
     align-items: center;
     padding: 6px 12px;
-    background: #EDEDF0;
+    background: #ededf0;
     border-radius: 30px;
     margin-left: 8px;
     margin-top: 8px;
-    color: #4A4B57;
+    color: #4a4b57;
 
     &:hover {
       color: #fff;

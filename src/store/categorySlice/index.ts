@@ -5,7 +5,7 @@ import { RootState } from '../index';
 export const CATEGORY_REDUCER_NAME = 'category';
 
 const initialState: CategoryReducerState = {
-  productLayout: 'grid',
+  productLayout: 'list',
 };
 
 const categorySlice = createSlice({
@@ -33,7 +33,7 @@ export const categorySelectors = {
   getProductLayout,
 };
 
-export const cartActions = {
+export const categoryActions = {
   ...categorySlice.actions,
 };
 
