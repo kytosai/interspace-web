@@ -17,7 +17,7 @@ import store from '@/store';
 
 const interFont = Inter({
   variable: '--font-inter',
-  weight: ['400', '700'],
+  weight: ['400', '500', '700'],
   subsets: ['latin'],
 });
 
