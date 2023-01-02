@@ -5,7 +5,7 @@ import { RootState } from '../index';
 export const CATEGORY_REDUCER_NAME = 'category';
 
 const initialState: CategoryReducerState = {
-  productLayout: 'list',
+  productLayout: 'grid',
 };
 
 const categorySlice = createSlice({

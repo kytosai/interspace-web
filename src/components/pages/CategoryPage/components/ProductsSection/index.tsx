@@ -3,7 +3,9 @@ import IconList from '@/components/icons/IconList';
 import IconSort from '@/components/icons/IconSort';
 import Alert from '@/components/shared/Alert';
 import ProductItemCard from '@/components/shared/ProductItemCard';
+import ProductItemCardHorizontal from '@/components/shared/ProductItemCardHorizontal';
 import ProductItemCardSkeleton from '@/components/shared/ProductItemCardSkeleton';
+import ProductItemCardSkeletonHorizontal from '@/components/shared/ProductItemCardSkeletonHorizontal';
 import { getProducts } from '@/services/api/getProducts';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { categoryActions, categorySelectors } from '@/store/categorySlice';
@@ -139,13 +141,21 @@ const ProductsSection = (props: ProductsSectionProps) => {
         </Alert>
       )}
 
-      <div className={styles.productRows}>
+      <div
+        className={clsx(styles.productRows, {
+          [styles.isProductRowsList]: productLayout === 'list',
+        })}
+      >
         {isLoading ? (
           <>
             {Array.from(new Array(12)).map((_, idx) => {
               return (
                 <div className={styles.productCol} key={idx}>
-                  <ProductItemCardSkeleton />
+                  {productLayout === 'list' ? (
+                    <ProductItemCardSkeletonHorizontal />
+                  ) : (
+                    <ProductItemCardSkeleton />
+                  )}
                 </div>
               );
             })}
@@ -155,7 +165,11 @@ const ProductsSection = (props: ProductsSectionProps) => {
             {productList.map((productItem) => {
               return (
                 <div className={styles.productCol} key={productItem.id}>
-                  <ProductItemCard productItem={productItem} />
+                  {productLayout === 'list' ? (
+                    <ProductItemCardHorizontal productItem={productItem} />
+                  ) : (
+                    <ProductItemCard productItem={productItem} />
+                  )}
                 </div>
               );
             })}

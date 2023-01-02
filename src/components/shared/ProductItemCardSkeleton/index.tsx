@@ -1,6 +1,5 @@
-import React from 'react';
+import Skeleton from 'react-loading-skeleton';
 import styles from './styles.module.scss';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 const ProductItemCardSkeleton = () => {
   return (

@@ -85,6 +85,7 @@
     cursor: pointer;
     padding: 0;
     margin: 0;
+    line-height: 1px;
   }
 
   .changeLayoutBtnActived {
@@ -145,5 +146,9 @@
 
   @media screen and (min-width: vars.$breakpointXlMin) {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  &.isProductRowsList {
+    grid-template-columns: repeat(1, 1fr);
   }
 } // .productRows
