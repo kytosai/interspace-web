@@ -1,3 +1,5 @@
+import IconLinesArrowDown from '@/components/icons/IconLinesArrowDown';
+import IconMenuHambuger from '@/components/icons/IconMenuHambuger';
 import MainLayout from '@/components/layouts/MainLayout';
 import ProductsSection from '@/components/pages/CategoryPage/components/ProductsSection';
 import styles from '@/components/pages/CategoryPage/styles.module.scss';
@@ -87,7 +89,7 @@ const CategoryPage: NextPageExtended = (props: CategoryPageProps) => {
 
         <main className={styles.mainPage}>
           <div className="container">
-            <Alert variant="warning">
+            <Alert variant="warning" classNames="mb-0">
               Cannot get category info! Please try again later!
             </Alert>
           </div>
@@ -116,6 +118,17 @@ const CategoryPage: NextPageExtended = (props: CategoryPageProps) => {
           </div>
         </div>
       </main>
+
+      <button className={styles.openMenuBtn}>
+        <IconMenuHambuger />
+      </button>
+
+      <button className={styles.openCateBtn}>
+        <span className={styles.openCateBtnIcon}>
+          <IconLinesArrowDown />
+        </span>
+        <span className={styles.openCateBtnLabel}>Categories</span>
+      </button>
     </>
   );
 };

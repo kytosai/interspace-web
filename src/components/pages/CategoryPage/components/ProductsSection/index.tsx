@@ -59,7 +59,9 @@ const ProductsSection = (props: ProductsSectionProps) => {
       </div>
 
       {!isLoading && productList.length <= 0 && (
-        <Alert variant="warning">Empty product in category</Alert>
+        <Alert variant="warning" classNames="mb-0">
+          Empty product in category
+        </Alert>
       )}
 
       <div className={styles.productRows}>

@@ -36,3 +36,58 @@
     flex: 1 1;
   }
 } // .mainPage
+
+.openMenuBtn {
+  position: fixed;
+  bottom: 28px;
+  z-index: 4;
+  width: 56px;
+  height: 56px;
+  background: #fff;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0px 2px 4px rgba(27, 78, 163, 0.2), 0px 4px 8px rgba(41, 121, 255, 0.2);
+  right: 50%;
+  color: vars.$primary1;
+  margin-right: 79px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (min-width: vars.$breakpointLgMin) {
+    display: none;
+  }
+} // .openMenuBtn
+
+.openCateBtn {
+  position: fixed;
+  bottom: 28px;
+  z-index: 4;
+  width: 190px;
+  height: 56px;
+  background-color: #eff6ef;
+  color: #4c8043;
+  font-family: vars.$fontQuicksand;
+  font-size: 24px;
+  border-radius: 50px;
+  border: 0;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 50%;
+  margin-left: -55px;
+
+  .openCateBtnIcon {
+    margin-right: 10px;
+    position: relative;
+    top: -3px;
+  }
+
+  .openCateBtnLabel {
+  }
+
+  @media screen and (min-width: vars.$breakpointLgMin) {
+    display: none;
+  }
+} // .openMenuBtn
