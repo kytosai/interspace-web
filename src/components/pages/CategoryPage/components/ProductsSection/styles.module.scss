@@ -1,0 +1,54 @@
+@use '@/assets/styles/_vars' as vars;
+
+.productSection {
+  padding: 8px;
+}
+
+.mobileHeadBar {
+  padding-top: 8px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+
+  @media screen and (min-width: vars.$breakpointLgMin) {
+    display: none;
+  }
+
+  .categoryTitle {
+    font-size: vars.$fontSizeXl;
+    font-family: vars.$fontQuicksand;
+    font-weight: 600;
+    margin: 0 auto 0 0;
+  }
+
+  .sortBtn {
+    background: #f0f6ef;
+    height: 40px;
+    color: #5d814f;
+    border-radius: 4px;
+    padding: 0 12px;
+    border: 0;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: vars.$fontSizeSm;
+    margin-left: 16px;
+    flex: 0 0 auto;
+    min-width: 0;
+
+    .sortBtnIcon {
+      margin-right: 8px;
+
+      :global {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+} // .mobileHeadBar
+
+.productRows {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}// .productRows

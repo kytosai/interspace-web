@@ -1,4 +1,5 @@
 import 'normalize.css';
+import 'react-loading-skeleton/dist/skeleton.css';
 import '@/assets/styles/global.scss';
 
 import EmptyLayout from '@/components/layouts/EmptyLayout';
@@ -22,7 +23,7 @@ const interFont = Inter({
 
 const quicksandFont = Quicksand({
   variable: '--font-quicksand',
-  weight: ['700'],
+  weight: ['600', '700'],
   subsets: ['latin'],
 });
 

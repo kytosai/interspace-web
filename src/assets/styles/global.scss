@@ -22,6 +22,10 @@ a {
 
 .container {
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 12px;
   max-width: 1524px;
+
+  @media screen and (min-width: vars.$breakpointLgMin) {
+    padding: 0 16px;
+  }
 }

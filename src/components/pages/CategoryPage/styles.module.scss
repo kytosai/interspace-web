@@ -1,0 +1,25 @@
+@use '@/assets/styles/_vars' as vars;
+
+.mainPage {
+  .mainPageInner {
+    margin: 0 -12px; // remove margin of container in mobile
+
+    @media screen and (min-width: vars.$breakpointLgMin) {
+      margin: 0;
+      display: flex;
+    }
+  }
+
+  .sidebarCol {
+    display: none;
+
+    @media screen and (min-width: vars.$breakpointLgMin) {
+      display: block;
+      width: 240px;
+      margin-right: 32px;
+    }
+  }
+
+  .mainCol {
+  }
+} // .mainPage
