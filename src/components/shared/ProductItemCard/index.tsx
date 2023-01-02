@@ -3,8 +3,7 @@ import { ProductItemCardProps } from './types';
 import styles from './styles.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
-import { APP_CONFIG } from '@/configs';
-import RatingStarBar from '../RatingStarBar';
+import RatingStarBar from '@/components/shared/RatingStarBar';
 import IconHeart from '@/components/icons/IconHeart';
 import { useAppDispatch } from '@/store';
 import { cartActions } from '@/store/cartSlice';
@@ -32,8 +31,6 @@ const ProductItemCard = (props: ProductItemCardProps) => {
             width={320}
             height={320}
             quality={100}
-            placeholder="blur"
-            blurDataURL={APP_CONFIG.BLUR_IMAGE_BASE64}
             loading="lazy"
           />
         </div>

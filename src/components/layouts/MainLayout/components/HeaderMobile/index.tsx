@@ -63,6 +63,9 @@ const HeaderMobile = (props: HeaderMobileProps) => {
                   })}
                   key={cateItem.id}
                   href={`/cat/${slugUrl}`}
+                  onClick={(e) => {
+                    if (isActive) e.preventDefault();
+                  }}
                 >
                   {cateItem.category_name}
                 </Link>

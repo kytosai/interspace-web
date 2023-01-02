@@ -61,6 +61,9 @@ const HeaderDesktop = (props: HeaderDesktopProps) => {
                   key={cateItem.id}
                   href={`/cat/${slugUrl}`}
                   title={cateItem.category_name}
+                  onClick={(e) => {
+                    if (isActive) e.preventDefault();
+                  }}
                 >
                   <div className={styles.cateItemIcon}>
                     <Image

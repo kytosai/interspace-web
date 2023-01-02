@@ -7,6 +7,7 @@ import styles from './styles.module.scss';
 import IconSort from '@/components/icons/IconSort';
 import ProductItemCard from '@/components/shared/ProductItemCard';
 import ProductItemCardSkeleton from '@/components/shared/ProductItemCardSkeleton';
+import Alert from '@/components/shared/Alert';
 
 const ProductsSection = (props: ProductsSectionProps) => {
   const { isValidCategory, category } = props;
@@ -46,15 +47,20 @@ const ProductsSection = (props: ProductsSectionProps) => {
     <section className={styles.productSection}>
       <div className={styles.mobileHeadBar}>
         <h1 className={styles.categoryTitle}>{category.category_name}</h1>
-        <button className={styles.sortBtn}>
-          <div className={styles.sortBtnIcon}>
-            <IconSort />
-          </div>
-          <div className={styles.sortBtnLabel}>Sort by</div>
-        </button>
+
+        {productList.length > 0 && (
+          <button className={styles.sortBtn}>
+            <div className={styles.sortBtnIcon}>
+              <IconSort />
+            </div>
+            <div className={styles.sortBtnLabel}>Sort by</div>
+          </button>
+        )}
       </div>
 
-      {!isLoading && productList.length <= 0 && <>Empty product in category</>}
+      {!isLoading && productList.length <= 0 && (
+        <Alert variant="warning">Empty product in category</Alert>
+      )}
 
       <div className={styles.productRows}>
         {isLoading ? (
