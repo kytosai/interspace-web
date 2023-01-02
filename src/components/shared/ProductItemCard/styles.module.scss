@@ -75,10 +75,11 @@
   .productDesc {
     color: vars.$secondary1;
     font-size: vars.$fontSizeXs;
-    height: vars.$fontSizeSm * 1.5 * 2;
+    height: vars.$fontSizeXs * 1.5 * 2;
     display: flex;
     align-items: center;
     overflow: hidden;
+    margin-bottom: 8px;
 
     @media screen and (min-width: vars.$breakpointLgMin) {
       font-size: vars.$fontSizeSm;
@@ -90,5 +91,72 @@
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
     }
-  }
+  } // .productDesc
+
+  .actionBar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .ratingStarBar {
+      :global {
+        svg {
+          @media screen and (min-width: vars.$breakpointXlMin) {
+            width: 11px;
+            height: 11px;
+          }
+        }
+      }
+    }
+
+    .rating {
+      font-size: vars.$fontSizeSm;
+      margin-left: 4px;
+      color: #5e6366;
+      font-family: vars.$fontRoboto;
+      font-weight: 500;
+
+      @media screen and (min-width: vars.$breakpointXlMin) {
+        margin-left: 8px;
+      }
+    }
+
+    .btnCol {
+      margin-left: auto;
+    }
+
+    .favoriteBtn,
+    .buyNowBtn {
+      background: transparent;
+      border: 1px solid vars.$primary2;
+      color: vars.$primary1;
+      border-radius: 4px;
+      height: 32px;
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14p;
+    }
+
+    .favoriteBtn {
+      width: 32px;
+      margin-left: auto;
+      padding: 0;
+      cursor: pointer;
+
+      @media screen and (min-width: vars.$breakpointLgMin) {
+        display: none;
+      }
+    }
+
+    .buyNowBtn {
+      display: none;
+      cursor: pointer;
+
+      @media screen and (min-width: vars.$breakpointLgMin) {
+        display: flex;
+      }
+    }
+  } // .actionBar
 } // .productItemCard

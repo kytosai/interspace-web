@@ -7,7 +7,7 @@ import MainLayout from '@/components/layouts/MainLayout';
 import { getStickyCategories } from '@/services/api/getStickyCategories';
 import { CategoryItem } from '@/types/category';
 import { AppPropsExtended } from '@/types/common';
-import { Inter, Quicksand } from '@next/font/google';
+import { Inter, Quicksand, Roboto } from '@next/font/google';
 import { cloneDeep } from 'lodash';
 import Head from 'next/head';
 import NextNProgress from 'nextjs-progressbar';
@@ -24,6 +24,12 @@ const interFont = Inter({
 const quicksandFont = Quicksand({
   variable: '--font-quicksand',
   weight: ['600', '700'],
+  subsets: ['latin'],
+});
+
+const robotoFont = Roboto({
+  variable: '--font-roboto',
+  weight: ['500'],
   subsets: ['latin'],
 });
 
@@ -49,6 +55,7 @@ function App(props: AppPropsExtended) {
             :root {
               --font-inter: ${interFont.style.fontFamily};
               --font-quicksand: ${quicksandFont.style.fontFamily};
+              --font-roboto: ${robotoFont.style.fontFamily};
             }
           `}
         </style>

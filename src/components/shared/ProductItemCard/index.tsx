@@ -4,10 +4,22 @@ import styles from './styles.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
 import { APP_CONFIG } from '@/configs';
+import RatingStarBar from '../RatingStarBar';
+import IconHeart from '@/components/icons/IconHeart';
+import { useAppDispatch } from '@/store';
+import { cartActions } from '@/store/cartSlice';
 
 const ProductItemCard = (props: ProductItemCardProps) => {
   const { productItem } = props;
   const productUrl = `/prd/${productItem.product_slug}`;
+  const dispatch = useAppDispatch();
+
+  const handleClickBuyNow = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.stopPropagation();
+    e.preventDefault();
+    dispatch(cartActions.increaseTotalQuantity());
+    alert('Added product to cart success!');
+  };
 
   return (
     <Link className={styles.productItemCard} href={productUrl}>
@@ -30,6 +42,21 @@ const ProductItemCard = (props: ProductItemCardProps) => {
       <div className={styles.productPrice}>${productItem.product_price}</div>
       <div className={styles.productDesc}>
         <div className={styles.productDescInner}>{productItem.product_descriptions}</div>
+      </div>
+      <div className={styles.actionBar}>
+        <RatingStarBar
+          classNames={styles.ratingStarBar}
+          rating={productItem.product_vote}
+        />
+        <div className={styles.rating}>{productItem.product_vote}</div>
+        <div className={styles.btnCol}>
+          <button className={styles.favoriteBtn}>
+            <IconHeart />
+          </button>
+          <button className={styles.buyNowBtn} onClick={handleClickBuyNow}>
+            Buy now
+          </button>
+        </div>
       </div>
     </Link>
   );

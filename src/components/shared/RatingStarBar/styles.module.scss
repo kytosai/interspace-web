@@ -1,0 +1,23 @@
+@use '@/assets/styles/_vars' as vars;
+
+.ratingStarBar {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  line-height: 1;
+
+  :global {
+    svg {
+      width: 10px;
+      height: 10px;
+    }
+  }
+}
+
+.starActive {
+  color: #fb8200;
+}
+
+.starInactive {
+  color: vars.$secondary1;
+}
