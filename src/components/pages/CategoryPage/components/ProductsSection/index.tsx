@@ -1,5 +1,6 @@
 import IconGrid from '@/components/icons/IconGrid';
 import IconList from '@/components/icons/IconList';
+import IconSolidArrowDown from '@/components/icons/IconSolidArrowDown';
 import IconSort from '@/components/icons/IconSort';
 import Alert from '@/components/shared/Alert';
 import ProductItemCard from '@/components/shared/ProductItemCard';
@@ -7,13 +8,14 @@ import ProductItemCardHorizontal from '@/components/shared/ProductItemCardHorizo
 import ProductItemCardSkeleton from '@/components/shared/ProductItemCardSkeleton';
 import ProductItemCardSkeletonHorizontal from '@/components/shared/ProductItemCardSkeletonHorizontal';
 import { getProducts } from '@/services/api/getProducts';
+import { SortByType } from '@/services/api/getProducts/types';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { categoryActions, categorySelectors } from '@/store/categorySlice';
 import { ProductItem } from '@/types/product';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
 import styles from './styles.module.scss';
 import { ProductsSectionProps } from './types';
 
@@ -38,6 +40,21 @@ const fakeFilteredList = [
   },
 ];
 
+const sortByList: { key: SortByType; name: string }[] = [
+  {
+    key: 'recommended',
+    name: 'Recommended',
+  },
+  {
+    key: 'created_at',
+    name: 'Recent add',
+  },
+  {
+    key: 'price_asc',
+    name: 'Price',
+  },
+];
+
 const ProductsSection = (props: ProductsSectionProps) => {
   const { isValidCategory, category } = props;
   const [isLoading, setIsLoading] = useState(true);
@@ -46,6 +63,10 @@ const ProductsSection = (props: ProductsSectionProps) => {
   const isComponentMounted = useRef(false);
   const router = useRouter();
   const dispatch = useAppDispatch();
+
+  const sortBy = useMemo<SortByType>(() => {
+    return (router.query.sort_by as SortByType) ?? 'recommended';
+  }, [router.query.sort_by]);
 
   useEffect(() => {
     isComponentMounted.current = true;
@@ -63,6 +84,7 @@ const ProductsSection = (props: ProductsSectionProps) => {
       try {
         const respGetProducts = await getProducts({
           category_id: category?.id,
+          sort_by: sortBy,
           _limit: 20,
         });
 
@@ -76,7 +98,24 @@ const ProductsSection = (props: ProductsSectionProps) => {
       }
       setIsLoading(false);
     })();
-  }, [router.query]);
+  }, [router.query, sortBy]);
+
+  const handleOnChangeSortBy = (e: ChangeEvent<HTMLSelectElement>) => {
+    if (e.target.value === sortBy) return;
+    router.push(
+      {
+        pathname: router.pathname,
+        query: {
+          slug: router.query.slug,
+          sort_by: e.target.value,
+        },
+      },
+      undefined,
+      {
+        shallow: true,
+      },
+    );
+  };
 
   return (
     <section className={styles.productSection}>
@@ -95,11 +134,23 @@ const ProductsSection = (props: ProductsSectionProps) => {
 
       <div className={styles.sortByBar}>
         <div className={styles.sortField}>
-          <select>
-            <option>Recommended</option>
-            <option>Recent add”</option>
-            <option>Price</option>
+          <div className={styles.sortFieldLabel}>Sort by</div>
+          <select
+            className={styles.sortSelectbox}
+            onChange={handleOnChangeSortBy}
+            value={sortBy}
+          >
+            {sortByList.map((item) => {
+              return (
+                <option key={item.key} value={item.key}>
+                  {item.name}
+                </option>
+              );
+            })}
           </select>
+          <div className={styles.sortSelectboxIcon}>
+            <IconSolidArrowDown />
+          </div>
         </div>
 
         <div className={styles.changeLayoutField}>
