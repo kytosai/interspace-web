@@ -139,6 +139,7 @@ const ProductsSection = (props: ProductsSectionProps) => {
             className={styles.sortSelectbox}
             onChange={handleOnChangeSortBy}
             value={sortBy}
+            disabled={isLoading || productList.length <= 0}
           >
             {sortByList.map((item) => {
               return (
