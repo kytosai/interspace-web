@@ -8,7 +8,7 @@ import clsx from 'clsx';
 import IconSpinner from '@/components/icons/IconSpinner';
 
 const SearchBar = () => {
-  const [keyword, setKeyword] = useState<string>('');
+  const [query, setQuery] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [keywordList, setKeywordList] = useState<KeywordItem[]>([]);
   const [selectedValue, setSelectedValue] = useState<KeywordItem | null>(null);
@@ -24,13 +24,13 @@ const SearchBar = () => {
 
   useEffect(() => {
     (async () => {
-      if (!keyword || !isComponentMounted.current) return;
+      if (!query || !isComponentMounted.current) return;
 
       setIsLoading(true);
 
       try {
         const respGetKeywords = await getKeywords({
-          q: keyword,
+          q: query,
           _limit: 20,
         });
 
@@ -48,10 +48,10 @@ const SearchBar = () => {
         setIsLoading(false);
       }
     })();
-  }, [keyword]);
+  }, [query]);
 
   const handleInputOnChange = debounce((event: ChangeEvent<HTMLInputElement>) => {
-    setKeyword(event.target.value);
+    setQuery(event.target.value);
   }, 500);
 
   return (
@@ -60,8 +60,7 @@ const SearchBar = () => {
       className={styles.searchBar}
       onChange={(keywordItem: KeywordItem) => {
         setSelectedValue(keywordItem);
-        setKeyword(keywordItem.keyword);
-        alert(`You are selected to "${keywordItem.keyword}"`);
+        setQuery(keywordItem.keyword);
       }}
       onBlur={() => {
         setKeywordList([]);
@@ -77,7 +76,13 @@ const SearchBar = () => {
           className={styles.searchInput}
           placeholder="Keywords..."
           autoComplete="off"
-          onChange={handleInputOnChange}
+          onChange={debounce((event: ChangeEvent<HTMLInputElement>) => {
+            setQuery(event.target.value);
+          }, 500)}
+          defaultValue={query}
+          displayValue={() => {
+            return query;
+          }}
         />
       </div>
 
