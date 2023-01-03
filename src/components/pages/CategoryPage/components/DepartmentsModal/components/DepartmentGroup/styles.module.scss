@@ -1,0 +1,66 @@
+@use '@/assets/styles/_vars' as vars;
+
+.departmentGroup {
+  .groupHead {
+    margin-bottom: 16px;
+  }
+
+  .groupTitle {
+    display: inline-flex;
+    align-items: center;
+    background: #ebf2ff;
+    border-radius: 30px;
+    padding: 8px 16px;
+    color: vars.$primary1;
+    min-width: 0;
+    max-width: 100%;
+
+    .groupTitleIcon {
+      flex: 0 0 30px;
+      min-width: 0;
+      width: 30px;
+      height: 30px;
+      margin-right: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .groupTitleIconImg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .groupTitleText {
+      font-size: vars.$fontSizeXl;
+      font-family: vars.$fontQuicksand;
+      font-weight: 700;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  } // .groupTitle
+
+  .groupBody {
+    padding: 0 16px;
+  }
+
+  .departmentItem {
+    font-family: vars.$fontRoboto;
+    
+    .departmentItemInner {
+      display: inline-block;
+      max-width: 100%;
+      color: #5a5b6a;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      border-radius: 4px;
+      padding: 8px 16px;
+
+      &:hover {
+        box-shadow: 0px 2px 4px rgba(58, 58, 68, 0.2), 0px 4px 8px rgba(90, 91, 106, 0.2);
+      }
+    }
+  } // .departmentItem
+} // .departmentGroup

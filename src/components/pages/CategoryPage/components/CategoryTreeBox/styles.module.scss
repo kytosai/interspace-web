@@ -1,0 +1,66 @@
+@use '@/assets/styles/_vars' as vars;
+
+.categoryTreeBox {
+  margin-bottom: 32px;
+
+  .boxHead {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    .boxHeadIconField {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #76a9ff;
+      transition: 0.3s;
+    }
+
+    .boxHeadRightCol {
+    }
+
+    .boxTitle {
+    }
+
+    .boxSubTitle {
+      font-size: vars.$fontSizeSm;
+      color: vars.$secondary1;
+    }
+  } // .boxHead
+
+  .boxBody {
+    display: none;
+    padding-left: 8px;
+  } // .boxBody
+
+  .showMoreBtn {
+    margin-left: 48px;
+    height: 40px;
+    padding: 0 12px;
+    font-size: vars.$fontSizeSm;
+    font-weight: 700;
+    font-family: vars.$fontRoboto;
+    border: 0;
+    border-radius: 4px;
+    color: vars.$primary1;
+    background: #EBF2FF;
+    cursor: pointer;
+  }
+
+  &.isExpanded {
+    .boxHead {
+      .boxHeadIconField {
+        transform: rotate(90deg);
+        color: vars.$primary1;
+      }
+    } // .boxHead
+
+    .boxBody {
+      display: block;
+    }
+  } // &.isExpanded
+} // .categoryTreeBox

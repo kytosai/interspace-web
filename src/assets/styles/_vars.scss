@@ -1,0 +1,25 @@
+// Color
+$primary1: #2264d1;
+$primary2: #9DC2FF;
+
+$secondary1: #787885;
+$secondary2: #19191d;
+$secondary3: #000;
+
+// Font size
+$fontSizeXs: 0.75rem; // 12px
+$fontSizeSm: 0.875rem; // 14px
+$fontSizeBase: 1rem; // 16px
+$fontSizeLg: 1.125rem; // 18px
+$fontSizeXl: 1.25rem; // 20px
+
+// Font family
+$fontInter: var(--font-inter);
+$fontQuicksand: var(--font-quicksand);
+$fontRoboto: var(--font-roboto);
+
+// Breakpoint
+$breakpointMdMin: 768px;
+$breakpointLgMin: 1024px;
+$breakpointXlMin: 1280px;
+$breakpoint2XlMin: 1536px;

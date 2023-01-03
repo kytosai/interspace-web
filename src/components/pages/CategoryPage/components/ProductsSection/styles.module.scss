@@ -1,0 +1,204 @@
+@use '@/assets/styles/_vars' as vars;
+
+.productSection {
+  padding: 8px;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: vars.$breakpointLgMin) {
+    border-radius: 8px;
+    box-shadow: 0px 1px 2px rgba(58, 58, 68, 0.24), 0px 2px 4px rgba(90, 91, 106, 0.24);
+    padding: 16px;
+  }
+}
+
+.mobileHeadBar {
+  padding-top: 8px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+
+  @media screen and (min-width: vars.$breakpointLgMin) {
+    display: none;
+  }
+
+  .categoryTitle {
+    font-size: vars.$fontSizeXl;
+    font-family: vars.$fontQuicksand;
+    font-weight: 600;
+    margin: 0 auto 0 0;
+  }
+
+  .sortBtn {
+    background: #f0f6ef;
+    height: 40px;
+    color: #5d814f;
+    border-radius: 4px;
+    padding: 0 12px;
+    border: 0;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: vars.$fontSizeSm;
+    margin-left: 16px;
+    flex: 0 0 auto;
+    min-width: 0;
+
+    .sortBtnIcon {
+      margin-right: 8px;
+
+      :global {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+} // .mobileHeadBar
+
+.sortByBar {
+  display: none;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: vars.$breakpointLgMin) {
+    display: flex;
+    align-items: center;
+  }
+
+  .sortField {
+    position: relative;
+
+    .sortFieldLabel {
+      text-transform: uppercase;
+      font-family: vars.$fontRoboto;
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 16px;
+      position: absolute;
+      left: 12px;
+      top: -8px;
+      padding: 0 4px;
+      background: #fff;
+      pointer-events: none;
+      color: #787885;
+      z-index: 2;
+    }
+
+    .sortSelectbox {
+      border-radius: 4px;
+      border: 1px solid #5a5b6a;
+      height: 36px;
+      padding: 0 28px 0 12px;
+      outline: none;
+      font-size: vars.$fontSizeSm;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+
+      &:focus {
+        border-color: vars.$primary1;
+      }
+    }
+
+    .sortSelectboxIcon {
+      position: absolute;
+      pointer-events: none;
+      width: 16px;
+      height: 16px;
+      right: 10px;
+      top: 50%;
+      margin-top: -8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: vars.$secondary1;
+    }
+  } // .sortField
+
+  .changeLayoutField {
+    margin-left: auto;
+    border-radius: 4px;
+    background: #ebf2ff;
+    display: flex;
+    height: 36px;
+    align-items: center;
+  }
+
+  .changeLayoutBtn {
+    width: 68px;
+    height: 36px;
+    border-radius: 4px;
+    background: transparent;
+    border: 0;
+    color: vars.$secondary1;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    line-height: 1px;
+  }
+
+  .changeLayoutBtnActived {
+    background: #fff;
+    color: vars.$primary1;
+    box-shadow: 0px 1px 2px rgba(27, 78, 163, 0.24), 0px 2px 4px rgba(41, 121, 255, 0.24);
+  }
+} // .sortByBar
+
+.filteredBar {
+  display: none;
+  margin-bottom: 16px;
+
+  @media screen and (min-width: vars.$breakpointLgMin) {
+    display: flex;
+    align-items: center;
+    margin-top: -8px;
+    font-size: vars.$fontSizeSm;
+    flex-wrap: wrap;
+  }
+
+  .filteredBarLabel {
+    font-weight: 500;
+    padding: 6px 0;
+    margin-top: 8px;
+  }
+
+  .filteredItem {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    background: #ededf0;
+    border-radius: 30px;
+    margin-left: 8px;
+    margin-top: 8px;
+    color: #4a4b57;
+
+    &:hover {
+      color: #fff;
+      background: vars.$primary2;
+    }
+  }
+} // .filteredBar
+
+.productRows {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+
+  @media screen and (min-width: vars.$breakpointMdMin) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (min-width: vars.$breakpointLgMin) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  @media screen and (min-width: vars.$breakpointXlMin) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (min-width: vars.$breakpoint2XlMin) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &.isProductRowsList {
+    grid-template-columns: repeat(1, 1fr);
+  }
+} // .productRows

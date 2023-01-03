@@ -1,4 +1,28 @@
-# frontend-test-for-kytosai
+# Intersapce web test
+
+## Introdution
+
+- Demo: https://interspace-web.vercel.app
+- Links:
+  - Repo mock api: https://github.com/kytosai/interspace-api
+  - Repo nexjts to deploy vercel demo: https://github.com/kytosai/interspace-web 
+  - Repo test requirement: https://github.com/interspace-obs/frontend-test-for-kytosai 
+
+## Setup for development
+
+- Requirement
+  - Nodejs >= v16
+- Start mock api (must have)
+  - Clone mock api server from https://github.com/kytosai/interspace-api 
+  - Run `yarn` and `yarn start` to start mock api server on local
+  - API will run at `http://localhost:9050`
+- Start nextjs web 
+  - Copy `dev.env` to `.env` or change content of the file to suit your need
+  - Run `yarn` for install node package in project
+  - Run `yarn dev` for start development
+
+## frontend-test-for-kytosai (Requirement)
+
 Figma file: https://www.figma.com/file/n7ZBXkYi0rbWv2IrXctTcx/FE-Test
 
 Requirement:

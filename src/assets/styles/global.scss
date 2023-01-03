@@ -1,0 +1,36 @@
+@use './_vars' as vars;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  font-family: vars.$fontInter;
+  color: vars.$secondary2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: vars.$secondary2;
+}
+
+a:hover {
+  color: vars.$primary1;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 12px;
+  max-width: 1524px;
+
+  @media screen and (min-width: vars.$breakpointLgMin) {
+    padding: 0 16px;
+  }
+}
