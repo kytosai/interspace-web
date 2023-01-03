@@ -1,6 +1,7 @@
 import IconLinesArrowDown from '@/components/icons/IconLinesArrowDown';
 import IconMenuHambuger from '@/components/icons/IconMenuHambuger';
 import MainLayout from '@/components/layouts/MainLayout';
+import CategoryTreeBox from '@/components/pages/CategoryPage/components/CategoryTreeBox';
 import DepartmentsModal from '@/components/pages/CategoryPage/components/DepartmentsModal';
 import FilterGroupBox from '@/components/pages/CategoryPage/components/FilterGroupBox';
 import ProductsSection from '@/components/pages/CategoryPage/components/ProductsSection';
@@ -122,6 +123,8 @@ const CategoryPage: NextPageExtended = (props: CategoryPageProps) => {
 
                 <span className={styles.openDepartmentBtnLabel}>Departments</span>
               </button>
+
+              <CategoryTreeBox categoryList={respCategories ?? []} />
 
               {respFilters?.map((item) => {
                 return <FilterGroupBox key={item.key} filterGroup={item} />;

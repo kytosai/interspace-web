@@ -1,0 +1,55 @@
+@use '@/assets/styles/_vars' as vars;
+
+.categoryBox {
+  .boxHead {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    .boxHeadIconField {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #76a9ff;
+      transition: 0.3s;
+    }
+
+    .boxHeadRightCol {
+      padding: 8px 0;
+    }
+
+    .boxTitle {
+    }
+
+    .boxSubTitle {
+      font-size: vars.$fontSizeSm;
+      color: vars.$secondary1;
+    }
+  } // .boxHead
+
+  .boxBody {
+    display: none;
+  } // .boxBody
+
+  .cateItem {
+    display: block;
+    padding: 8px 0 8px 48px;
+  }
+
+  &.isExpanded {
+    .boxHead {
+      .boxHeadIconField {
+        transform: rotate(90deg);
+        color: vars.$primary1;
+      }
+    } // .boxHead
+
+    .boxBody {
+      display: block;
+    }
+  } // &.isExpanded
+} // .categoryBox
