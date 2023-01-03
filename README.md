@@ -38,7 +38,7 @@ Build with: Nextjs, Redux, Typescript, SCSS
   - Repo to deploy vercel demo: https://github.com/kytosai/interspace-web
   - Repo test requirement: https://github.com/interspace-obs/frontend-test-for-kytosai
 
-- Through the information about the company described, I am so excited to stand the opportunity to be part of your amazing team. I really hope that you give me the opportunity to contribute my energy to your development journey!
+Through the information about the company described, I am so excited to stand the opportunity to be part of your amazing team and i can contribute my energy to your development journey!
 
 Thank you! Wishing you all a wonderful day!
 
