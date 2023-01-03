@@ -4,10 +4,16 @@ import { CategoryItemLv2Props } from './types';
 import styles from './styles.module.scss';
 import clsx from 'clsx';
 import Link from 'next/link';
+import IconArrowDown from '@/components/icons/IconArrowDown';
+
+const LIMIT_CATE_SHOW = 4;
 
 const CategoryItemLv2 = (props: CategoryItemLv2Props) => {
   const { category } = props;
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isShowLimited, setIsShowLimited] = useState(
+    category.childrens.length > LIMIT_CATE_SHOW,
+  );
 
   return (
     <div
@@ -26,7 +32,11 @@ const CategoryItemLv2 = (props: CategoryItemLv2Props) => {
       </div>
 
       <div className={styles.boxBody}>
-        {category.childrens.map((cateItem) => {
+        {category.childrens.map((cateItem, idx) => {
+          if (isShowLimited && idx >= LIMIT_CATE_SHOW) {
+            return null;
+          }
+
           return (
             <Link
               className={styles.cateItem}
@@ -37,6 +47,22 @@ const CategoryItemLv2 = (props: CategoryItemLv2Props) => {
             </Link>
           );
         })}
+
+        {category.childrens.length > LIMIT_CATE_SHOW && (
+          <button
+            className={clsx(styles.showMoreBtn, {
+              [styles.isShowLess]: !isShowLimited,
+            })}
+            onClick={() => setIsShowLimited(!isShowLimited)}
+          >
+            <span className={styles.showMoreBtnLabel}>
+              {isShowLimited ? <>Show more</> : <>Show less</>}
+            </span>
+            <span className={styles.showMoreBtnIcon}>
+              <IconArrowDown />
+            </span>
+          </button>
+        )}
       </div>
     </div>
   );

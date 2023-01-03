@@ -40,6 +40,42 @@
     padding: 8px 0 8px 48px;
   }
 
+  .showMoreBtn {
+    margin-left: 48px;
+    height: 40px;
+    padding: 0 20px;
+    font-size: vars.$fontSizeSm;
+    font-weight: 700;
+    font-family: vars.$fontRoboto;
+    border: 0;
+    border-radius: 4px;
+    color: vars.$primary1;
+    background: #ebf2ff;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+
+    .showMoreBtnLabel {
+      margin-right: 16px;
+    }
+
+    .showMoreBtnIcon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 12px;
+      height: 12px;
+      color: #787885;
+      transition: 0.3s;
+    }
+
+    &.isShowLess {
+      .showMoreBtnIcon {
+        transform: rotate(180deg);
+      }
+    }
+  } // .showMoreBtn
+
   &.isExpanded {
     .boxHead {
       .boxHeadIconField {

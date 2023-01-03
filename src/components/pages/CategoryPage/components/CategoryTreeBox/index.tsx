@@ -5,9 +5,14 @@ import styles from './styles.module.scss';
 import clsx from 'clsx';
 import CategoryItemLv1 from './components/CategoryItemLv1';
 
+const LIMIT_CATE_SHOW = 6;
+
 const CategoryTreeBox = (props: CategoryTreeBoxProps) => {
   const { categoryList } = props;
   const [isExpanded, setIsExpanded] = useState(true);
+  const [isShowLimited, setIsShowLimited] = useState(
+    categoryList.length > LIMIT_CATE_SHOW,
+  );
 
   if (categoryList.length <= 0) return null;
 
@@ -29,9 +34,19 @@ const CategoryTreeBox = (props: CategoryTreeBoxProps) => {
       </div>
 
       <div className={styles.boxBody}>
-        {categoryList.map((cateItem) => {
+        {categoryList.map((cateItem, idx) => {
+          if (isShowLimited && idx >= LIMIT_CATE_SHOW) {
+            return null;
+          }
+
           return <CategoryItemLv1 key={cateItem.id} category={cateItem} />;
         })}
+
+        {isShowLimited && (
+          <button className={styles.showMoreBtn} onClick={() => setIsShowLimited(false)}>
+            Expand
+          </button>
+        )}
       </div>
     </div>
   );
