@@ -1,10 +1,10 @@
 @use '@/assets/styles/_vars' as vars;
 
-.searchBar {
+.searchForm {
   margin: 0 auto;
   position: relative;
 
-  .searchForm {
+  .searchFormInner {
     position: relative;
   }
 
@@ -13,7 +13,7 @@
     color: vars.$secondary1;
     width: 20px;
     height: 20px;
-    top: calc(48px/2 - 20px/2);
+    top: calc(48px / 2 - 20px / 2);
     left: 14px;
     display: flex;
     align-items: center;
@@ -31,7 +31,7 @@
   .searchInput {
     width: 100%;
     height: 48px;
-    background: #EDEDF0;
+    background: #ededf0;
     border-radius: 60px;
     border: 0;
     min-width: 412px;
@@ -46,13 +46,33 @@
     @media screen and (min-width: vars.$breakpoint2XlMin) {
       min-width: 668px;
     }
+
+    &.searchInputHasValue {
+      padding-right: 48px;
+    }
+  } // .searchInput
+
+  .removeBtn {
+    position: absolute;
+    top: 50%;
+    margin-top: -12px;
+    right: 14px;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: vars.$primary1;
+    cursor: pointer;
   }
 
   .suggestOptions {
     position: absolute;
     top: 52px;
     border-radius: 8px;
-    box-shadow: 0 0 8px rgba(#000,0.2);
+    box-shadow: 0 0 8px rgba(#000, 0.2);
     background: #fff;
     width: 100%;
     z-index: 4;
@@ -62,7 +82,7 @@
     scroll-padding-top: 8px;
     scroll-padding-bottom: 8px;
   }
-  
+
   .optionItem {
     padding: 4px 12px;
     margin-bottom: 1px;
@@ -77,4 +97,4 @@
     background: vars.$primary1;
     color: #fff;
   }
-}// .searchBar
+} // .searchForm

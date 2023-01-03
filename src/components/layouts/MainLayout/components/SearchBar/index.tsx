@@ -6,6 +6,7 @@ import { getKeywords, KeywordItem } from '@/services/api/getKeywords';
 import IconSearchThin from '@/components/icons/IconSearchThin';
 import clsx from 'clsx';
 import IconSpinner from '@/components/icons/IconSpinner';
+import IconClose from '@/components/icons/IconClose';
 
 const SearchBar = () => {
   const [query, setQuery] = useState<string>('');
@@ -13,6 +14,7 @@ const SearchBar = () => {
   const [keywordList, setKeywordList] = useState<KeywordItem[]>([]);
   const [selectedValue, setSelectedValue] = useState<KeywordItem | null>(null);
   const isComponentMounted = useRef(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     isComponentMounted.current = true;
@@ -52,61 +54,84 @@ const SearchBar = () => {
 
   const handleInputOnChange = debounce((event: ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
-  }, 500);
+  }, 300);
 
   return (
-    <Combobox
-      as="div"
-      className={styles.searchBar}
-      onChange={(keywordItem: KeywordItem) => {
-        setSelectedValue(keywordItem);
-        setQuery(keywordItem.keyword);
+    <form
+      className={styles.searchForm}
+      onSubmit={(e) => {
+        e.preventDefault();
+        alert(`Submitted with "${query}"`);
       }}
-      onBlur={() => {
-        setKeywordList([]);
-      }}
-      value={selectedValue}
     >
-      <div className={styles.searchForm}>
-        <div className={styles.prefixInputIconField}>
-          {isLoading ? <IconSpinner /> : <IconSearchThin />}
+      <Combobox
+        as="div"
+        onChange={(keywordItem: KeywordItem) => {
+          setSelectedValue(keywordItem);
+          setQuery(keywordItem.keyword);
+        }}
+        onBlur={() => {
+          setKeywordList([]);
+          setSelectedValue(null);
+        }}
+        value={selectedValue}
+      >
+        <div className={styles.searchFormInner}>
+          <div className={styles.prefixInputIconField}>
+            {isLoading ? <IconSpinner /> : <IconSearchThin />}
+          </div>
+
+          <Combobox.Input
+            ref={inputRef}
+            className={clsx(styles.searchInput, {
+              [styles.searchInputHasValue]: !!query,
+            })}
+            placeholder="Keword, type to suggest..."
+            autoComplete="off"
+            onChange={handleInputOnChange}
+            defaultValue={query}
+            displayValue={() => {
+              return query;
+            }}
+          />
         </div>
 
-        <Combobox.Input
-          className={styles.searchInput}
-          placeholder="Keywords..."
-          autoComplete="off"
-          onChange={debounce((event: ChangeEvent<HTMLInputElement>) => {
-            setQuery(event.target.value);
-          }, 500)}
-          defaultValue={query}
-          displayValue={() => {
-            return query;
-          }}
-        />
-      </div>
+        {query && (
+          <button
+            className={styles.removeBtn}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setQuery('');
+              inputRef.current?.focus();
+            }}
+          >
+            <IconClose />
+          </button>
+        )}
 
-      {!isLoading && keywordList.length > 0 && (
-        <Combobox.Options className={styles.suggestOptions}>
-          {keywordList.map((keywordItem, idx) => {
-            return (
-              <Combobox.Option
-                key={idx}
-                value={keywordItem}
-                className={({ active }) => {
-                  return clsx({
-                    [styles.optionItem]: true,
-                    [styles.optionItemActived]: active,
-                  });
-                }}
-              >
-                <div>{keywordItem.keyword}</div>
-              </Combobox.Option>
-            );
-          })}
-        </Combobox.Options>
-      )}
-    </Combobox>
+        {!isLoading && keywordList.length > 0 && (
+          <Combobox.Options className={styles.suggestOptions}>
+            {keywordList.map((keywordItem, idx) => {
+              return (
+                <Combobox.Option
+                  key={idx}
+                  value={keywordItem}
+                  className={({ active }) => {
+                    return clsx({
+                      [styles.optionItem]: true,
+                      [styles.optionItemActived]: active,
+                    });
+                  }}
+                >
+                  <div>{keywordItem.keyword}</div>
+                </Combobox.Option>
+              );
+            })}
+          </Combobox.Options>
+        )}
+      </Combobox>
+    </form>
   );
 };
 
