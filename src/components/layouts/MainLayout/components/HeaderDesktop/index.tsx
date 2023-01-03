@@ -1,4 +1,5 @@
 import Logo from '@/assets/images/logo.svg';
+import { buildImageUrlFromApi } from '@/helpers/imageHelper';
 import { cartSelectors } from '@/store/cartSlice';
 import clsx from 'clsx';
 import Image from 'next/image';
@@ -69,7 +70,7 @@ const HeaderDesktop = (props: HeaderDesktopProps) => {
                     <div className={styles.cateItemIcon}>
                       <Image
                         className={styles.cateItemIconImg}
-                        src={cateItem.icon_url}
+                        src={buildImageUrlFromApi(cateItem.icon_url)}
                         width={18}
                         height={18}
                         alt={cateItem.category_name}

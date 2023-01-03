@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import { DepartmentGroupProps } from './types';
 import styles from './styles.module.scss';
+import { buildImageUrlFromApi } from '@/helpers/imageHelper';
 
 const DepartmentGroup = (props: DepartmentGroupProps) => {
   const { deparment } = props;
@@ -19,7 +20,7 @@ const DepartmentGroup = (props: DepartmentGroupProps) => {
           <span className={styles.groupTitleIcon}>
             <Image
               className={styles.groupTitleIconImg}
-              src={deparment.icon_url}
+              src={buildImageUrlFromApi(deparment.icon_url)}
               width={18}
               height={18}
               alt={deparment.department_name}

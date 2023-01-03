@@ -7,6 +7,7 @@ import RatingStarBar from '@/components/shared/RatingStarBar';
 import IconHeart from '@/components/icons/IconHeart';
 import { useAppDispatch } from '@/store';
 import { cartActions } from '@/store/cartSlice';
+import { buildImageUrlFromApi } from '@/helpers/imageHelper';
 
 const ProductItemCardHorizontal = (props: ProductItemCardProps) => {
   const { productItem } = props;
@@ -26,7 +27,7 @@ const ProductItemCardHorizontal = (props: ProductItemCardProps) => {
         <div className={styles.productImgFieldInner}>
           <Image
             className={styles.productImg}
-            src={productItem.product_image}
+            src={buildImageUrlFromApi(productItem.product_image)}
             alt={productItem.product_name}
             width={320}
             height={320}
