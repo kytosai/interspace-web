@@ -86,7 +86,7 @@ const SearchBar = () => {
             className={clsx(styles.searchInput, {
               [styles.searchInputHasValue]: !!query,
             })}
-            placeholder="Keword, type to suggest..."
+            placeholder="Search, please type to suggest..."
             autoComplete="off"
             onChange={handleInputOnChange}
             defaultValue={query}
