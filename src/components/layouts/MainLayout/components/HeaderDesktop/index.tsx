@@ -45,42 +45,44 @@ const HeaderDesktop = (props: HeaderDesktopProps) => {
         </button>
       </div>
 
-      <div className={styles.cateBar}>
-        <div className="container">
-          <div className={styles.cateBarInner}>
-            {stickyCategories.map((cateItem) => {
-              const slugUrl = `${cateItem.category_slug}-${cateItem.id}`;
-              const isActive = slugUrl === router.query.slug;
+      {stickyCategories.length > 0 && (
+        <div className={styles.cateBar}>
+          <div className="container">
+            <div className={styles.cateBarInner}>
+              {stickyCategories.map((cateItem) => {
+                const slugUrl = `${cateItem.category_slug}-${cateItem.id}`;
+                const isActive = slugUrl === router.query.slug;
 
-              return (
-                <Link
-                  className={clsx({
-                    [styles.cateItem]: true,
-                    [styles.isActive]: isActive,
-                  })}
-                  key={cateItem.id}
-                  href={`/cat/${slugUrl}`}
-                  title={cateItem.category_name}
-                  onClick={(e) => {
-                    if (isActive) e.preventDefault();
-                  }}
-                >
-                  <div className={styles.cateItemIcon}>
-                    <Image
-                      className={styles.cateItemIconImg}
-                      src={cateItem.icon_url}
-                      width={18}
-                      height={18}
-                      alt={cateItem.category_name}
-                    />
-                  </div>
-                  <div className={styles.cateItemName}>{cateItem.category_name}</div>
-                </Link>
-              );
-            })}
+                return (
+                  <Link
+                    className={clsx({
+                      [styles.cateItem]: true,
+                      [styles.isActive]: isActive,
+                    })}
+                    key={cateItem.id}
+                    href={`/cat/${slugUrl}`}
+                    title={cateItem.category_name}
+                    onClick={(e) => {
+                      if (isActive) e.preventDefault();
+                    }}
+                  >
+                    <div className={styles.cateItemIcon}>
+                      <Image
+                        className={styles.cateItemIconImg}
+                        src={cateItem.icon_url}
+                        width={18}
+                        height={18}
+                        alt={cateItem.category_name}
+                      />
+                    </div>
+                    <div className={styles.cateItemName}>{cateItem.category_name}</div>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };

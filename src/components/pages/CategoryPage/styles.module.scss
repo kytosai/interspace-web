@@ -37,6 +37,35 @@
   }
 } // .mainPage
 
+.openDepartmentBtn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+  border: 1px solid vars.$primary2;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  padding: 0 20px;
+  background: transparent;
+  color: vars.$primary1;
+  cursor: pointer;
+
+  .openDepartmentBtnIcon {
+    width: 18px;
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .openDepartmentBtnLabel {
+    flex: 1 1;
+    font-family: vars.$fontQuicksand;
+    font-size: 24px;
+    font-weight: 700;
+  }
+} // .openDepartmentBtn
+
 .openMenuBtn {
   position: fixed;
   bottom: 28px;

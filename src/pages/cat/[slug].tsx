@@ -107,7 +107,15 @@ const CategoryPage: NextPageExtended = (props: CategoryPageProps) => {
       <main className={styles.mainPage}>
         <div className="container">
           <div className={styles.mainPageInner}>
-            <div className={styles.sidebarCol}>Sidebar</div>
+            <div className={styles.sidebarCol}>
+              <button className={styles.openDepartmentBtn}>
+                <span className={styles.openDepartmentBtnIcon}>
+                  <IconLinesArrowDown />
+                </span>
+
+                <span className={styles.openDepartmentBtnLabel}>Departments</span>
+              </button>
+            </div>
 
             <div className={styles.mainCol}>
               <ProductsSection
