@@ -15,14 +15,11 @@
 
     @media screen and (min-width: vars.$breakpointLgMin) {
       display: block;
-      width: 240px;
+      width: 280px;
       margin-right: 32px;
     }
 
     @media screen and (min-width: vars.$breakpointXlMin) {
-      display: block;
-      width: 240px;
-      margin-right: 32px;
     }
 
     @media screen and (min-width: vars.$breakpoint2XlMin) {
