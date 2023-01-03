@@ -1,0 +1,103 @@
+@use '@/assets/styles/_vars' as vars;
+
+.departmentsModal {
+  position: relative;
+  z-index: 50;
+
+  .backdrop {
+    position: fixed;
+    background: rgba(#000, 0.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+  }
+
+  .containerInner {
+    display: flex;
+    min-height: 100vh;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 16px 16px 0;
+  }
+
+  .panel {
+    width: 100%;
+    max-width: 1114px;
+    border-radius: 24px 24px 0 0;
+    margin: 0 auto;
+    background: #fff;
+    padding: 24px 16px;
+  }
+
+  .panelHead {
+    font-family: vars.$fontQuicksand;
+    font-weight: 700;
+    margin-bottom: 40px;
+
+    @media screen and (min-width: vars.$breakpointMdMin) {
+      display: flex;
+      align-items: center;
+    }
+
+    .panelTitle {
+      margin: 0;
+      font-size: 24px;
+
+      @media screen and (min-width: vars.$breakpointLgMin) {
+        font-size: 34px;
+      }
+    }
+
+    .panelViewMore {
+      display: block;
+      color: vars.$primary1;
+      margin-top: 4px;
+      text-align: right;
+
+      @media screen and (min-width: vars.$breakpointMdMin) {
+        margin: 0 16px 0 auto;
+      }
+
+      @media screen and (min-width: vars.$breakpointLgMin) {
+        font-size: vars.$fontSizeXl;
+      }
+    } // .panelViewMore
+  } // .panelHead
+
+  .panelBody {
+  }
+
+  .departmanentsRows {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 40px;
+    column-gap: 36px;
+    margin-bottom: 16px;
+
+    @media screen and (min-width: vars.$breakpointMdMin) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: vars.$breakpointLgMin) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media screen and (min-width: vars.$breakpointXlMin) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  } // .panelBody
+
+  .departmentCol {
+    min-width: 0;
+  }
+} // .departmentsModal

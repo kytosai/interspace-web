@@ -3,6 +3,7 @@ import MainLayout from '@/components/layouts/MainLayout';
 import { NextPageExtended } from '@/types/common';
 import Head from 'next/head';
 import { APP_CONFIG } from '@/configs';
+import Alert from '@/components/shared/Alert';
 
 const HomePage: NextPageExtended = () => {
   return (
@@ -11,7 +12,9 @@ const HomePage: NextPageExtended = () => {
         <title>{APP_CONFIG.BRAND_NAME}</title>
       </Head>
 
-      <div className="container">Home page</div>
+      <div className="container">
+        <Alert classNames="mt-2">Please choose a category for view product list!</Alert>
+      </div>
     </>
   );
 };

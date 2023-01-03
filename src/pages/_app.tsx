@@ -30,7 +30,7 @@ const quicksandFont = Quicksand({
 
 const robotoFont = Roboto({
   variable: '--font-roboto',
-  weight: ['500'],
+  weight: ['400', '500'],
   subsets: ['latin'],
 });
 

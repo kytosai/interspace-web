@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "dev": "next dev -p 9051",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start -p 9051",
+    "start": "next start",
     "lint": "next lint",
     "check:ts": "tsc --noEmit",
     "prettify": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",

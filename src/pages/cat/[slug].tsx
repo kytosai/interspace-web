@@ -1,6 +1,7 @@
 import IconLinesArrowDown from '@/components/icons/IconLinesArrowDown';
 import IconMenuHambuger from '@/components/icons/IconMenuHambuger';
 import MainLayout from '@/components/layouts/MainLayout';
+import DepartmentsModal from '@/components/pages/CategoryPage/components/DepartmentsModal';
 import ProductsSection from '@/components/pages/CategoryPage/components/ProductsSection';
 import styles from '@/components/pages/CategoryPage/styles.module.scss';
 import { CategoryPageProps } from '@/components/pages/CategoryPage/types';
@@ -14,6 +15,7 @@ import { CategoryItem } from '@/types/category';
 import { NextPageExtended } from '@/types/common';
 import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
 import Head from 'next/head';
+import { useState } from 'react';
 
 export async function getServerSideProps(
   context: GetServerSidePropsContext,
@@ -79,6 +81,7 @@ const CategoryPage: NextPageExtended = (props: CategoryPageProps) => {
   const { isValidCategory, categoryId, respCategories, respCategory, respFilters } =
     props;
   const pageHeadTitle = formatPageHeadTitle(respCategory?.category_name ?? 'Category');
+  const [isOpenDeparmentsModal, setIsOpenDeparmentsModal] = useState(false);
 
   if (!isValidCategory) {
     return (
@@ -108,7 +111,10 @@ const CategoryPage: NextPageExtended = (props: CategoryPageProps) => {
         <div className="container">
           <div className={styles.mainPageInner}>
             <div className={styles.sidebarCol}>
-              <button className={styles.openDepartmentBtn}>
+              <button
+                className={styles.openDepartmentBtn}
+                onClick={() => setIsOpenDeparmentsModal(true)}
+              >
                 <span className={styles.openDepartmentBtnIcon}>
                   <IconLinesArrowDown />
                 </span>
@@ -137,6 +143,11 @@ const CategoryPage: NextPageExtended = (props: CategoryPageProps) => {
         </span>
         <span className={styles.openCateBtnLabel}>Categories</span>
       </button>
+
+      <DepartmentsModal
+        isOpen={isOpenDeparmentsModal}
+        setIsOpen={setIsOpenDeparmentsModal}
+      />
     </>
   );
 };
