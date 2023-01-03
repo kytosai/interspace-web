@@ -2,6 +2,7 @@ import IconLinesArrowDown from '@/components/icons/IconLinesArrowDown';
 import IconMenuHambuger from '@/components/icons/IconMenuHambuger';
 import MainLayout from '@/components/layouts/MainLayout';
 import DepartmentsModal from '@/components/pages/CategoryPage/components/DepartmentsModal';
+import FilterGroupBox from '@/components/pages/CategoryPage/components/FilterGroupBox';
 import ProductsSection from '@/components/pages/CategoryPage/components/ProductsSection';
 import styles from '@/components/pages/CategoryPage/styles.module.scss';
 import { CategoryPageProps } from '@/components/pages/CategoryPage/types';
@@ -121,6 +122,10 @@ const CategoryPage: NextPageExtended = (props: CategoryPageProps) => {
 
                 <span className={styles.openDepartmentBtnLabel}>Departments</span>
               </button>
+
+              {respFilters?.map((item) => {
+                return <FilterGroupBox key={item.key} filterGroup={item} />;
+              })}
             </div>
 
             <div className={styles.mainCol}>
