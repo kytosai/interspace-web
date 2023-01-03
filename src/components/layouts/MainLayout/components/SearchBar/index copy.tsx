@@ -40,7 +40,6 @@ const SearchBar = () => {
 
         if (!respGetKeywords.data) {
           setKeywordList([]);
-          setSelectedValue(null);
           return;
         }
 
@@ -54,8 +53,6 @@ const SearchBar = () => {
   }, [query]);
 
   const handleInputOnChange = debounce((event: ChangeEvent<HTMLInputElement>) => {
-    setKeywordList([]);
-    setSelectedValue(null);
     setQuery(event.target.value);
   }, 300);
 
@@ -101,7 +98,6 @@ const SearchBar = () => {
 
         {query && (
           <button
-            type="button"
             className={styles.removeBtn}
             onClick={(e) => {
               e.preventDefault();
