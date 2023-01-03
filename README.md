@@ -1,4 +1,4 @@
-# Intersapce web test
+# Interspace web test
 
 ## Requirement
 
@@ -31,7 +31,7 @@ Build with: Nextjs, Redux, Typescript, SCSS
   - Repo mock api: https://github.com/kytosai/interspace-api
   - Mock api live: https://interspace-api.kytosai.com  
 
-- Regarding this test project in my experience this is a website that will have a complex and highly customizable interface, so I have decided not to use any UI framework. Also because time is limited and some information about UI/UX is not complete, I have tried to complete the project as much as possible. However, there will be a lot of things that are not good, I hope if I can continue to participate in the technical interview, I will have the opportunity to present and answer your any questions about this project.
+- Regarding this test project in my experience this is a website that will have a complex and highly customizable interface, so I have decided not to use any UI framework. Also because time is limited and some information about UI/UX is not complete (responsive UI for some components on mobile, breakpoint, font-size/line-height standard,...etc), I have tried to complete the project as much as possible. However, there will be a lot of things that are not good, I hope if I can continue to participate in the technical interview, I will have the opportunity to present and answer your any questions about this project.
   - For example: some components have not been optimized for reuse by me (button...).
 
 - Because for the convenience of website demo, I would like to put the source code on my personal repo to deploy on vercel. In addition, I have put a version on the `dev` branch in the repository containing the main requirement.
