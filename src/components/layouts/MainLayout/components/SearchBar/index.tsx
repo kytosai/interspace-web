@@ -72,6 +72,7 @@ const SearchBar = () => {
         onChange={(keywordItem: KeywordItem) => {
           setSelectedValue(keywordItem);
           setQuery(keywordItem.keyword);
+          inputRef.current?.focus();
         }}
         value={selectedValue}
       >
