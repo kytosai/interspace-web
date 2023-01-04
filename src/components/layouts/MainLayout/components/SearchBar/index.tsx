@@ -73,10 +73,6 @@ const SearchBar = () => {
           setSelectedValue(keywordItem);
           setQuery(keywordItem.keyword);
         }}
-        onBlur={() => {
-          setKeywordList([]);
-          setSelectedValue(null);
-        }}
         value={selectedValue}
       >
         <div className={styles.searchFormInner}>
